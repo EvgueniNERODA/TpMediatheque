@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/*
 @Component
 @Qualifier("filmMock")
 public class DAOFilmMock implements IDAOFilm, IDAOMembre {
@@ -48,4 +48,8 @@ public class DAOFilmMock implements IDAOFilm, IDAOMembre {
         membreList.add(membre2);
         return membreList;
     }
+
+
 }
+
+ */

@@ -11,14 +11,23 @@ public class Membre extends Personne{
     private boolean isAdmmin;
 
     /* Associations */
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Avis avis;
 
 
-    public Membre(long id, String nom, String prenom, String login, String motDePasse, boolean isAdmmin) {
+    public Membre(String login, String motDePasse, boolean isAdmmin, Avis avis) {
+        this.login = login;
+        this.motDePasse = motDePasse;
+        this.isAdmmin = isAdmmin;
+        this.avis = avis;
+    }
+
+    public Membre(long id, String nom, String prenom, String login, String motDePasse, boolean isAdmmin, Avis avis) {
         super(id, nom, prenom);
         this.login = login;
         this.motDePasse = motDePasse;
         this.isAdmmin = isAdmmin;
+        this.avis = avis;
     }
 
     public Membre() {
@@ -47,5 +56,13 @@ public class Membre extends Personne{
 
     public void setAdmmin(boolean admmin) {
         isAdmmin = admmin;
+    }
+
+    public Avis getAvis() {
+        return avis;
+    }
+
+    public void setAvis(Avis avis) {
+        this.avis = avis;
     }
 }

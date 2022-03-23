@@ -1,17 +1,29 @@
 package fr.evgueni.tpmediatheque.bo;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "genre")
 public class Genre {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String libelle;
+
+    /* Associations */
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true, mappedBy = "genre")
     private List<Film> filmGenreList;
 
-    public Genre(long id, String libelle) {
+    public Genre(long id, String libelle, List<Film> filmGenreList) {
         this.id = id;
         this.libelle = libelle;
         this.filmGenreList = filmGenreList;
+    }
+
+    public Genre() {
+
     }
 
     public long getId() {

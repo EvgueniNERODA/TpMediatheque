@@ -1,16 +1,20 @@
-<h1>Films</h1>
-<ul class="heroes">
-  <li *ngFor="let film of films">
-    <a routerLink="/detail/{{film.id}}">
-      <span class="badge">{{film.id}}</span> {{film.titre}}
-    </a>
-
-  </li>
-</ul>
-<h1>Membres</h1>
-<li *ngFor="let membre of membres">
-  <a routerLink="/detail/{{membre.id}}">
-    <span class="badge">{{membre.id}}</span> {{membre.nom}}
-  </a>
-
-</li>
+<div id="home-main-content" class="bg-light p-5 rounded">
+  <h1>Movie List</h1>
+  <div style="padding: 1rem">
+    <a href="@{/addFilm}" class="btn btn-outline-primary">Add Movie</a>
+  </div>
+  <br />
+  <div>
+    <div class="row">
+      <div *ngFor="let film of films" class="col-4">
+        <div class="card" style="width: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">{{film.titre}}</h5>
+            <p class="card-text">{{film.synopsys}}</p>
+            <a  class="btn btn-primary">Detail</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

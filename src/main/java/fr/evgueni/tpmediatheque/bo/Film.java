@@ -1,5 +1,8 @@
 package fr.evgueni.tpmediatheque.bo;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -17,16 +20,18 @@ public class Film {
 
 
     /* Associations */
-    @OneToMany(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "film_participant", joinColumns = {@JoinColumn(name = "film_pkey")}, inverseJoinColumns = {@JoinColumn(name = "participant_pkey")})
     private List<Participant> acteurs;
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Participant realisateur;
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Genre genre;
-    @Transient
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true, mappedBy = "avisFilm")
     private List<Avis> avisList;
 
-    public Film(long id, String titre, int annee, int duree, String synopsis,  Participant realisateur, Genre genre) {
+    public Film(long id, String titre, int annee, int duree, String synopsis, List<Participant> acteurs, Participant realisateur, Genre genre, List<Avis> avisList) {
         this.id = id;
         this.titre = titre;
         this.annee = annee;
