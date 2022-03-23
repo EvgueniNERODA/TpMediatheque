@@ -1,0 +1,16 @@
+<h1>Films</h1>
+<ul class="heroes">
+  <li *ngFor="let film of films">
+    <a routerLink="/detail/{{film.id}}">
+      <span class="badge">{{film.id}}</span> {{film.titre}}
+    </a>
+
+  </li>
+</ul>
+<h1>Membres</h1>
+<li *ngFor="let membre of membres">
+  <a routerLink="/detail/{{membre.id}}">
+    <span class="badge">{{membre.id}}</span> {{membre.nom}}
+  </a>
+
+</li>

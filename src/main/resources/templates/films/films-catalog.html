@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:fragment="main-fragment (title, mainContent)">
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" th:href="@{/vendor/bootstrap/bootstrap.min.css}"/>
+<title>Page 1 Title</title>
+<body>
+<div id="home-main-content" class="bg-light p-5 rounded">
+    <h1>Movie List</h1>
+    <div style="padding: 1rem">
+        <a th:href="@{/addFilm}" class="btn btn-outline-primary">Add Movie</a>
+    </div>
+    <br />
+    <div>
+        <div class="row">
+            <div th:each="movie : ${movies}" class="col-4">
+                <div class="card" style="width: 100%;">
+                    <div class="card-body">
+                        <h5 th:utext="${movie.titre}" class="card-title">Card title</h5>
+                        <p th:utext="${movie.synopsis}" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a th:href="@{/film/{id}(id=${movie.id})}" class="btn btn-primary">Detail</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>

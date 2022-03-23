@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    th:fragment="main-fragment (title, mainContent)">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/bootstrap/bootstrap.min.css}"/>
+	<title th:replace="${title}">Page 1 Title</title>
+</head>
+<body>
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+	  <div class="container-fluid">
+	    <a class="navbar-brand" href="/">Eni Demo</a>
+	  </div>
+	</nav>
+
+	<main class="container" th:insert="${mainContent} ?: ~{}">
+    </main>
+</body>
+</html>

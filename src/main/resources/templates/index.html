@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<!--  main-fragment (title, otherStaticResources, header, nav, mainContent, footer)  -->
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layouts/main-layout :: main-fragment(  
+                                                ~{::title},
+                                                ~{:: #home-main-content},  
+                                               )}">
+
+<head>
+<title>Welcome</title>
+</head>
+<body>
+	<div id="home-main-content" class="bg-light p-5 rounded">
+		<h1>Person List</h1>
+		<a th:href="@{/showPersonList}" class="btn btn-outline-primary">Person List</a>
+	</div>
+</body>
+</html>
