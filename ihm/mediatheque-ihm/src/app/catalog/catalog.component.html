@@ -11,7 +11,7 @@
           <div class="card-body">
             <h5 class="card-title">{{film.titre}}</h5>
             <p class="card-text">{{film.synopsys}}</p>
-            <a routerLink="/detail-film" routerLinkActive="active" class="btn btn-primary">Detail</a>
+            <a [routerLink]="['/detail-film', film.id]"  routerLinkActive="active" class="btn btn-primary">Detail</a>
           </div>
         </div>
       </div>

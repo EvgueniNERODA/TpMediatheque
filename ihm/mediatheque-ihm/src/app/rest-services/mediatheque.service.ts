@@ -26,7 +26,7 @@ private log(message: string) {
   this.messageService.add(`HeroService: ${message}`);
 }
 
-  /** GET heroes from the server */
+  /** GET films from the server */
   getFilms(): Observable<Film[]> {
     return this.http.get<Film[]>('/api/films').pipe(
       catchError(this.handleError<Film[]>('getFilms', []))
@@ -42,9 +42,9 @@ private log(message: string) {
 
   }
 
-  /** GET hero by id. Will 404 if id not found */
-  getHero(id: number): Observable<Film> {
-    const url = `${this.heroesUrl}/${id}`;
+  /** GET film by id. Will 404 if id not found */
+  getFilmById(id: number): Observable<Film> {
+    const url = `api/detailFilm/${id}`;
     return this.http.get<Film>(url).pipe(
       tap(_ => this.log(`fetched hero id=${id}`)),
       catchError(this.handleError<Film>(`getHero id=${id}`))
