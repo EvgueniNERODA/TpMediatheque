@@ -4,11 +4,15 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import javax.sql.rowset.serial.SerialArray;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "film")
-public class Film {
+public class Film implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,28 +24,23 @@ public class Film {
 
 
     /* Associations */
-    @LazyCollection(LazyCollectionOption.FALSE)
+    @LazyCollection(LazyCollectionOption.FALSE) //pour éviter MultipleBagFetchException enlever (fetch = FetchType.EAGER) et ajouter @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(name = "film_participant", joinColumns = {@JoinColumn(name = "film_pkey")}, inverseJoinColumns = {@JoinColumn(name = "participant_pkey")})
-    private List<Participant> acteurs;
+    @JoinTable(name = "film_acteur", joinColumns = {@JoinColumn(name = "film_pkey")}, inverseJoinColumns = {@JoinColumn(name = "acteur_pkey")})
+    private List<Acteur> acteurs;
+    /*
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Participant realisateur;
+
+     */
+    /*
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Genre genre;
+
+     */
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true, mappedBy = "avisFilm")
     private List<Avis> avisList;
 
-    public Film(long id, String titre, int annee, int duree, String synopsis, List<Participant> acteurs, Participant realisateur, Genre genre, List<Avis> avisList) {
-        this.id = id;
-        this.titre = titre;
-        this.annee = annee;
-        this.duree = duree;
-        this.synopsis = synopsis;
-        this.acteurs = acteurs;
-        this.realisateur = realisateur;
-        this.genre = genre;
-        this.avisList = avisList;
-    }
 
     public Film(){
 
@@ -87,28 +86,12 @@ public class Film {
         this.synopsis = synopsis;
     }
 
-    public List<Participant> getActeurs() {
+    public List<Acteur> getActeurs() {
         return acteurs;
     }
 
-    public void setActeurs(List<Participant> acteurs) {
+    public void setActeurs(List<Acteur> acteurs) {
         this.acteurs = acteurs;
-    }
-
-    public Participant getRealisateur() {
-        return realisateur;
-    }
-
-    public void setRealisateur(Participant realisateur) {
-        this.realisateur = realisateur;
-    }
-
-    public Genre getGenre() {
-        return genre;
-    }
-
-    public void setGenre(Genre genre) {
-        this.genre = genre;
     }
 
     public List<Avis> getAvisList() {

@@ -1,11 +1,14 @@
 package fr.evgueni.tpmediatheque.bo;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "genre")
-public class Genre {
+public class Genre implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,7 +16,8 @@ public class Genre {
     private String libelle;
 
     /* Associations */
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true, mappedBy = "genre")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name = "genre_id")
     private List<Film> filmGenreList;
 
     public Genre(long id, String libelle, List<Film> filmGenreList) {

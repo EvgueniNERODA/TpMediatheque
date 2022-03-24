@@ -4,31 +4,26 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-@Entity
-@Table(name = "participant")
+
 public class Participant implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private long id;
     private String nom;
     private String prenom;
 
     /* Associations */
+    /*
     @ManyToMany(mappedBy = "acteurs")
     private List<Film> acteursFilmList;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true, mappedBy = "realisateur")
+
+     */
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true )
+    @JoinColumn(name = "realisateur_id")
     private List<Film> realisateurFilmList;
 
-    public Participant(long id, String nom, String prenom, List<Film> acteursFilmList, List<Film> realisateurFilmList) {
-        this.id = id;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.acteursFilmList = acteursFilmList;
-        this.realisateurFilmList = realisateurFilmList;
-    }
 
     public Participant() {
 
@@ -58,13 +53,6 @@ public class Participant implements Serializable {
         this.prenom = prenom;
     }
 
-    public List<Film> getActeursFilmList() {
-        return acteursFilmList;
-    }
-
-    public void setActeursFilmList(List<Film> acteursFilmList) {
-        this.acteursFilmList = acteursFilmList;
-    }
 
     public List<Film> getRealisateurFilmList() {
         return realisateurFilmList;
