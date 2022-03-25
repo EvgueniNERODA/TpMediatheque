@@ -10,13 +10,13 @@ public class BLLManager {
     private FilmManager filmManager;
 
     @Autowired
-    private MembreManager membreManager;
+    private PersonneManager personneManager;
 
     public FilmManager getFilmManager(){
         return filmManager;
     }
 
-    public MembreManager getMmembreManager(){
-        return membreManager;
+    public PersonneManager getMmembreManager(){
+        return personneManager;
     }
 }

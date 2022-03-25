@@ -7,6 +7,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { AddAvisComponent } from './add-avis/add-avis.component';
 import { DetailFilmComponent } from './detail-film/detail-film.component';
 import {CatalogComponent} from "./catalog/catalog.component";
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -20,7 +21,8 @@ import {CatalogComponent} from "./catalog/catalog.component";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

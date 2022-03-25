@@ -1,10 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Ajouter une critique</title>
-</head>
-<body>
+<div id="home-main-content" class="bg-light p-5 rounded">
+  <h1>Add movie</h1>
 
-</body>
-</html>
+  <form th:action="@{/addMovie}" th:object="${movie}"
+        method="POST">
+
+    <!-- Title -->
+    <div class="mb-3">
+      <label for="title" class="form-label">Title: </label> <input
+      type="text" class="form-control" th:field="*{title}"
+      id="title">
+    </div>
+    <!-- Year -->
+    <div class="input-group mb-3">
+      <span class="input-group-text">Year</span>
+      <input type="text" class="form-control" aria-label="Year" th:field="*{year}">
+    </div>
+    <!-- Duration -->
+    <div class="input-group mb-3">
+      <span class="input-group-text">Minutes</span>
+      <input type="text" class="form-control" aria-label="Minute duration" th:field="*{duration}" id="minute">
+    </div>
+    <!-- Syno -->
+    <div class="mb-3">
+      <label for="lsynopsis" class="form-label">Synopsis: </label> <input
+      type="text" class="form-control" th:field="*{synopsis}"
+      id="synopsis">
+    </div>
+    <!-- ASSOCIATION -->
+    <div th:object="${movieForm}" >
+      <!-- Genre -->
+      <div class="mb-3">
+        <label for="title" class="form-label">Genre: </label>
+        <select class="form-select" aria-label="Genre" *ngFor="let genre of genres">
+          <option  value="{{genre.id}}" text="{{genre.libelle}}">{{genre.libelle}}</option>
+        </select>
+      </div>
+      <!-- Realisateur -->
+      <div class="mb-3">
+        <label for="title" class="form-label">Realisateur: </label>
+        <select class="form-select" aria-label="Realisateur" th:field="*{realisatorId}">
+          <option th:each="realisator : ${movieFormSetting.participantList}" th:value="${realisator.id}" th:text="${#strings.toString(realisator)}"></option>
+        </select>
+      </div>
+    </div>
+    <!-- ./ASSOCIATION -->
+    <!-- Submit -->
+    <button type="submit" class="btn btn-primary mb-3">Create</button>
+  </form>
+</div>

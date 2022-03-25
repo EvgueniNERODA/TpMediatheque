@@ -1,6 +1,6 @@
 package fr.evgueni.tpmediatheque.dao;
 
-import fr.evgueni.tpmediatheque.bll.MembreManager;
+import fr.evgueni.tpmediatheque.bll.PersonneManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -14,15 +14,15 @@ public class DAO{
     private IDAOFilm idaoFilm;
 
     @Autowired
-    @Qualifier("membreRepo")
-    private IDAOMembre idaoMembre;
+    @Qualifier("personneRepo")
+    private IDAOPersonne idaoPersonne;
 
        public IDAOFilm getIdaoFilm(){
            return idaoFilm;
        }
 
 
-        public IDAOMembre getIDAOMembre() {
-            return idaoMembre;
+       public IDAOPersonne getIDAOPersonne() {
+            return idaoPersonne;
         }
 }

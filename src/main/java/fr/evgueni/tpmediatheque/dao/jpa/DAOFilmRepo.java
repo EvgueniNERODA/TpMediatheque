@@ -1,6 +1,7 @@
 package fr.evgueni.tpmediatheque.dao.jpa;
 
 import fr.evgueni.tpmediatheque.bo.Film;
+import fr.evgueni.tpmediatheque.bo.Genre;
 import fr.evgueni.tpmediatheque.bo.Membre;
 import fr.evgueni.tpmediatheque.dao.IDAOFilm;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,9 @@ public class DAOFilmRepo implements IDAOFilm {
     @Autowired
     FilmRepository filmRepository;
 
+    @Autowired
+    GenreRepository genreRepository;
+
     @Override
     public Film getFilmById(long id) {
         return filmRepository.findById(id).orElse(null);
@@ -29,6 +33,11 @@ public class DAOFilmRepo implements IDAOFilm {
     @Override
     public Film addFilm(Film film) {
         return filmRepository.save(film);
+    }
+
+    @Override
+    public List<Genre> selectAllGenres() {
+        return (List<Genre>) genreRepository.findAll();
     }
 
 

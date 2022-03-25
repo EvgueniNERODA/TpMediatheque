@@ -15,15 +15,15 @@ public class Genre implements Serializable {
     private long id;
     private String libelle;
 
-    /* Associations */
+    /* Associations
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinColumn(name = "genre_id")
     private List<Film> filmGenreList;
-
-    public Genre(long id, String libelle, List<Film> filmGenreList) {
+*/
+    public Genre(long id, String libelle) {
         this.id = id;
         this.libelle = libelle;
-        this.filmGenreList = filmGenreList;
+
     }
 
     public Genre() {
@@ -46,11 +46,5 @@ public class Genre implements Serializable {
         this.libelle = libelle;
     }
 
-    public List<Film> getFilmGenreList() {
-        return filmGenreList;
-    }
 
-    public void setFilmGenreList(List<Film> filmGenreList) {
-        this.filmGenreList = filmGenreList;
-    }
 }

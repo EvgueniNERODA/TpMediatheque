@@ -7,6 +7,7 @@ import {Film} from "../model/Film";
 import {MessageService} from "./message.service";
 import {environment} from "./environnement";
 import {Membre} from "../model/Membre";
+import {Genre} from "../model/Genre";
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +49,13 @@ private log(message: string) {
     return this.http.get<Film>(url).pipe(
       tap(_ => this.log(`fetched hero id=${id}`)),
       catchError(this.handleError<Film>(`getHero id=${id}`))
+    );
+  }
+
+  /** GET Genre list. Will 404 if id not found */
+  getGenres (): Observable<Genre[]> {
+    return this.http.get<Genre[]>('/api/genres').pipe(
+      catchError(this.handleError<Genre[]>('getGenres', []))
     );
   }
 

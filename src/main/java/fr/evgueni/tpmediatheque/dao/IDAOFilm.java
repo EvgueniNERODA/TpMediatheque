@@ -1,6 +1,7 @@
 package fr.evgueni.tpmediatheque.dao;
 
 import fr.evgueni.tpmediatheque.bo.Film;
+import fr.evgueni.tpmediatheque.bo.Genre;
 import fr.evgueni.tpmediatheque.bo.Membre;
 
 import java.util.List;
@@ -13,4 +14,5 @@ public interface IDAOFilm {
 
     Film addFilm (Film film);
 
+    List<Genre> selectAllGenres();
 }

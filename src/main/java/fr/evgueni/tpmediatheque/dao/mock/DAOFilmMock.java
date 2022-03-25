@@ -2,7 +2,6 @@ package fr.evgueni.tpmediatheque.dao.mock;
 
 import fr.evgueni.tpmediatheque.bo.*;
 import fr.evgueni.tpmediatheque.dao.IDAOFilm;
-import fr.evgueni.tpmediatheque.dao.IDAOMembre;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 

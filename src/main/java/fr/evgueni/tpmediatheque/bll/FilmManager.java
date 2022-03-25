@@ -1,6 +1,7 @@
 package fr.evgueni.tpmediatheque.bll;
 
 import fr.evgueni.tpmediatheque.bo.Film;
+import fr.evgueni.tpmediatheque.bo.Genre;
 import fr.evgueni.tpmediatheque.dao.DAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -26,4 +27,6 @@ public class FilmManager {
     }
 
 
+    public List<Genre> selectAllGenres() { return dao.getIdaoFilm().selectAllGenres();
+    }
 }

@@ -1,7 +1,7 @@
 <div id="home-main-content" class="bg-light p-5 rounded">
   <h1>Movie List</h1>
   <div style="padding: 1rem">
-    <a href="@{/addFilm}" class="btn btn-outline-primary">Add Movie</a>
+    <a [routerLink]="['/add-avis']" class="btn btn-outline-primary">Add Movie</a>
   </div>
   <br />
   <div>
@@ -10,7 +10,7 @@
         <div class="card" style="width: 100%;">
           <div class="card-body">
             <h5 class="card-title">{{film.titre}}</h5>
-            <p class="card-text">{{film.synopsys}}</p>
+            <p class="card-text">{{film.synopsis}}</p>
             <a [routerLink]="['/detail-film', film.id]"  routerLinkActive="active" class="btn btn-primary">Detail</a>
           </div>
         </div>

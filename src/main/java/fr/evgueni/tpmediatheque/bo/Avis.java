@@ -14,16 +14,19 @@ public class Avis {
     private String commentaire;
 
     /* Associations */
+    /*
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Film avisFilm;
+
+     */
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true, mappedBy = "avis")
     private List<Membre> listeAvisMembres;
 
-    public Avis(long id, int note, String commentaire, Film avisFilm, List<Membre> listeAvisMembres) {
+    public Avis(long id, int note, String commentaire, List<Membre> listeAvisMembres) {
         this.id = id;
         this.note = note;
         this.commentaire = commentaire;
-        this.avisFilm = avisFilm;
         this.listeAvisMembres = listeAvisMembres;
     }
 
@@ -55,13 +58,6 @@ public class Avis {
         this.commentaire = commentaire;
     }
 
-    public Film getAvisFilm() {
-        return avisFilm;
-    }
-
-    public void setAvisFilm(Film avisFilm) {
-        this.avisFilm = avisFilm;
-    }
 
     public List<Membre> getListeAvisMembres() {
         return listeAvisMembres;

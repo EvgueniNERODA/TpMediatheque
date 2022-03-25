@@ -7,9 +7,9 @@ export interface Film {
   titre: string;
   annee: number;
   duree: number;
-  synopsys: string;
+  synopsis: string;
   acteurs: Acteur [];
   realsateur: Acteur;
-  genre: Genre [];
+  genre: Genre;
   avisList: Avis [];
 }
